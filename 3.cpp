@@ -85,6 +85,6 @@ int main()
 		}
 	cout<<"man with exp < 10 & maxsl:"<<maxslfio;
 	cout<<'\n';
-	p[4]=p[2];
-	cout<<"operator= test "<< p[4];
+	p[n+1]=p[2];
+	cout<<"operator= test "<<p[n+1];
 }
