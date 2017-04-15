@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-#define T 4
 
 using namespace std;
 
@@ -10,6 +9,11 @@ class vektor
 	int n;
 	public:
 		vektor(int an){a=new double [n=an];}
+		vektor(const vektor& p){
+			int n=p.n;
+			a=new double[n];
+			for(int i=0;i<n;i++) a[i]=p.a[i];
+		}
 		~vektor(){delete []a;}
 		double& operator[](int k){return a[k];}
 		vektor operator*(const double&);
@@ -33,7 +37,8 @@ vektor vektor::operator*(const double& c)
 }
 
 int main()
-{
+{ 
+	int T=4;
 	vektor p(T),q(T),r(T),s(T);
 	double n;
 	cout<<"Enter P coordinates: ";
