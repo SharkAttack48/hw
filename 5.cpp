@@ -142,11 +142,12 @@ int main()
 	cout<<"\n";
 	for (i=0;i<n;i++) cout<<p[i];
 	cout<<"\n";
-	for (i=0;i<n;i++)
+	bool f=1;
+	for (i=0;i<n && f;i++)
 		if((!strcmp(p[i].getgender(),t))&&(p[i].getexp()<10))
 		{		
 			s=i;
-			break;
+			f=0;
 		}
 	unsigned maxsl=p[s].getsal();
 	char*maxslfio;
@@ -158,7 +159,8 @@ int main()
 			maxsl=p[i].getsal();
 			strcpy(maxslfio,p[i].getfio());
 		}
-	cout<<"woman with experience <10 and max salary:"<<maxslfio;
+	if (!f) cout<<"woman with experience <10 and max salary: "<<maxslfio;
+	else cout<<"all employees 10+ experience";	
 	cout<<"\n";
 	p[n+1]=p[1];
 	cout<<"operator '=' test "<< p[n+1];
