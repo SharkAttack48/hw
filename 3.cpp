@@ -70,18 +70,19 @@ int main()
 	char name[30];
 	int i,n,s;
 	unsigned sl,xp;
-	cout<<"Enter number of employers: ";
+	cout<<"Enter number of employees: ";
 	cin>>n;
-	cout<<"Enter data (name|experience|salary) of employers: ";
+	cout<<"Enter data (name|experience|salary) of employees: ";
 	for (i=0;i<n;i++) cin>>p[i];
 	cout<<"\n";
 	for (i=0;i<n;i++) cout<<p[i];
 	cout<<"\n";
-	for (i=0;i<n;i++)
+	bool f=1;
+	for (i=0;i<n && f;i++)
 		if(p[i].getexp()<10)
 		{		
 			s=i;
-			break;
+			f=0;
 		}
 	unsigned maxsl=p[s].getsal();
 	char*maxslfio;
@@ -93,7 +94,8 @@ int main()
 			maxsl=p[i].getsal();
 			strcpy(maxslfio,p[i].getfio());
 		}
-	cout<<"man with experience <10 and max salary:"<<maxslfio;
+	if (!f) cout<<"man with experience <10 and max salary: "<<maxslfio;
+	else cout<<"all employees 10+ experience";
 	cout<<"\n";
 	p[n+1]=p[2];
 	cout<<"operator '=' test "<< p[n+1];
