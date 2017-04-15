@@ -1,7 +1,9 @@
 #include <iostream>
 #include <iomanip>
 #include <cstring>
+
 using namespace std;
+
 class people
 {
 	private:
@@ -68,23 +70,31 @@ int main()
 	char name[30];
 	int i,n,s;
 	unsigned sl,xp;
+	cout<<"Enter number of employers: ";
 	cin>>n;
+	cout<<"Enter data (name|experience|salary) of employers: ";
 	for (i=0;i<n;i++) cin>>p[i];
-	cout<<'\n';
+	cout<<"\n";
 	for (i=0;i<n;i++) cout<<p[i];
-	cout<<'\n';
-	unsigned maxsl=p[0].getsal();
+	cout<<"\n";
+	for (i=0;i<n;i++)
+		if(p[i].getexp()<10)
+		{		
+			s=i;
+			break;
+		}
+	unsigned maxsl=p[s].getsal();
 	char*maxslfio;
-	maxslfio=new char[strlen(p[0].getfio())+1];
-	strcpy(maxslfio,p[0].getfio());
-	for (i=1;i<n;i++)
+	maxslfio=new char[strlen(p[s].getfio())+1];
+	strcpy(maxslfio,p[s].getfio());
+	for (i=s+1;i<n;i++)
 		if ((p[i].getsal()>maxsl) && (p[i].getexp()<10))
 		{
 			maxsl=p[i].getsal();
 			strcpy(maxslfio,p[i].getfio());
 		}
-	cout<<"man with exp < 10 & maxsl:"<<maxslfio;
-	cout<<'\n';
+	cout<<"man with experience <10 and max salary:"<<maxslfio;
+	cout<<"\n";
 	p[n+1]=p[2];
-	cout<<"operator= test "<<p[n+1];
+	cout<<"operator '=' test "<< p[n+1];
 }
